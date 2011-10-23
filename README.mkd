@@ -91,7 +91,7 @@ mz_mail_chimp:
         /**
          * Subscribe user to list
          * */
-        $list->addToList($email);
+        $list->Subscribe($email);
 ```
 
 **MailChimp Export API [List](http://apidocs.mailchimp.com/export/1.0/list.func.php)  in controller**

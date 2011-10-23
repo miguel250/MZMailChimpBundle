@@ -23,7 +23,6 @@ class MCList extends HttpClient
     private $replaceInterests = true;
     private $sendWelcome = false;
 
-
     /**
      * Set mailchimp merge
      *
@@ -91,7 +90,7 @@ class MCList extends HttpClient
      *
      * @return boolen
      */
-    public function addToList($email)
+    public function Subscribe($email)
     {
         $payload = array('id' => $this->listId,
             'email_address' => $email,
@@ -103,9 +102,9 @@ class MCList extends HttpClient
             'send_welcome' => $this->sendWelcome);
 
         $apiCall = '1.3/?method=listSubscribe';
-        $data = $this->makeRequest($apiCall ,$payload);
+        $data = $this->makeRequest($apiCall, $payload);
         $data = json_decode($data);
-        
+
         if (empty($data)) {
             return false;
         } else {
