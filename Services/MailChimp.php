@@ -42,4 +42,14 @@ class MailChimp
     {
         $this->listId = $listId;
     }
+
+    /**
+     * Get List Methods
+     *
+     * @return API\MCList
+     */
+    public function getList()
+    {
+        return new API\MCList($this->apiKey,  $this->listId);
+    }
 }
