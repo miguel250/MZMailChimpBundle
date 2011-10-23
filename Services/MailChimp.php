@@ -56,4 +56,14 @@ class MailChimp
     {
         return new Methods\MCList($this->apiKey,  $this->listId, $this->dataCenter);
     }
+
+    /**
+     *  Get Export API
+     *
+     * @return Methods\MCExport
+     */
+    public function getExport()
+    {
+        return new Methods\MCExport($this->apiKey, $this->listId, $this->dataCenter);
+    }
 }

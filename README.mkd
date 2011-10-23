@@ -1,10 +1,14 @@
 # MZMailChimpBundle
-Symfony2 bundle for [MailChimp](http://apidocs.mailchimp.com/api/1.3/index.php) API
+Symfony2 bundle for [MailChimp](http://apidocs.mailchimp.com/api/1.3/index.php) API And [Export API](http://apidocs.mailchimp.com/export/1.0/)
 
 
 **MailChimp API Method Supported**
 
 `1. listSubscribe`
+
+**MailChimp Export API Method Supported**
+
+`1. list`
 
 Need support for a method not on the list submit an [issue](MZMailChimpBundle/issues/new)
 
@@ -58,7 +62,7 @@ mz_mail_chimp:
         $mailChimp = $this->get('MailChimp');
 ```
 
-**[Subscribe](http://apidocs.mailchimp.com/api/1.3/listsubscribe.func.php) user to mailing list in controller**
+**MailChimp API [Subscribe](http://apidocs.mailchimp.com/api/1.3/listsubscribe.func.php) user to mailing list in controller**
 
 ``` php
 <?php
@@ -88,4 +92,14 @@ mz_mail_chimp:
          * Subscribe user to list
          * */
         $list->addToList($email);
+```
+
+**MailChimp Export API [List](http://apidocs.mailchimp.com/export/1.0/list.func.php)  in controller**
+
+``` php
+<?php
+       $mailChimp = $this->get('MailChimp');
+       $export = $mailChimp->getExport();
+       $data = $export->DumpList(); //return array
+
 ```
