@@ -102,8 +102,8 @@ class MCList extends HttpClient
             'replace_interests' => $this->replaceInterests,
             'send_welcome' => $this->sendWelcome);
 
-        $api = '1.3';
-        $data = $this->makeRequest('listSubscribe', $api ,$payload);
+        $apiCall = '1.3/?method=listSubscribe';
+        $data = $this->makeRequest($apiCall ,$payload);
 
         if (empty($data)) {
             return false;
