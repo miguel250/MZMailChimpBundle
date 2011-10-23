@@ -117,7 +117,7 @@ class MCList extends HttpClient
         $data = $this->makeRequest('listSubscribe', $payload);
 
         if (!empty($data->error)) {
-            throw new \Exception("$data->code $data->error");
+            return false;
         } else {
             return true;
         }

@@ -38,7 +38,11 @@ class HttpClient
         curl_close($ch);
         $data = json_decode($result);
 
-        return $data;
+        if (!empty($data->error)) {
+            throw new \Exception("$data->code $data->error");
+        } else {
+            return $data;
+        }
     }
 
 }
