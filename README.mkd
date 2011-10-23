@@ -15,11 +15,11 @@ Need support for a method not on the list submit an [issue](MZMailChimpBundle/is
 ## Setup
 **Using Submodule**
 
-    git submodule add https://miguel250@github.com/miguel250/MZMailChimpBundle.git vendor/bundles/MZ/MailChimpBundle
+    git submodule add https://github.com/miguel250/MZMailChimpBundle.git vendor/bundles/MZ/MailChimpBundle
 **Using the vendors script**
 
       [MZMailChimpBundle]
-          git=https://miguel250@github.com/miguel250/MZMailChimpBundle.git
+          git=https://github.com/miguel250/MZMailChimpBundle.git
           target=bundles/MZ/MailChimpBundle
 **Add the MZ namespace to autoloader**
 
