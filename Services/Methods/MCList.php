@@ -16,7 +16,6 @@ use MZ\MailChimpBundle\Services\HttpClient;
 class MCList extends HttpClient
 {
 
-    private $listId;
     private $merge = null;
     private $emailType = 'html';
     private $doubleOptin = true;
@@ -24,18 +23,6 @@ class MCList extends HttpClient
     private $replaceInterests = true;
     private $sendWelcome = false;
 
-    /**
-     * Initializes List Methods
-     *
-     * @param string $apiKey
-     * @param string $listId
-     */
-    public function __construct($apiKey, $listId, $dataCenter)
-    {
-        $this->apiKey = $apiKey;
-        $this->listId = $listId;
-        $this->dataCenter = $dataCenter;
-    }
 
     /**
      * Set mailchimp merge

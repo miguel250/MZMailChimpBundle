@@ -17,6 +17,19 @@ class HttpClient
     protected $apiKey;
 
     /**
+     * Initializes Http client
+     *
+     * @param string $apiKey
+     * @param string $listId
+     */
+    public function __construct($apiKey, $listId, $dataCenter)
+    {
+        $this->apiKey = $apiKey;
+        $this->listId = $listId;
+        $this->dataCenter = $dataCenter;
+    }
+
+    /**
      * Send API request to mailchimp
      *
      * @return array
