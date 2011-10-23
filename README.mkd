@@ -2,6 +2,7 @@
 Symfony2 bundle for [MailChimp](http://apidocs.mailchimp.com/api/1.3/index.php) API And [Export API](http://apidocs.mailchimp.com/export/1.0/)
 
 **License**
+
 MZMailChimpBundle is licensed under the MIT License - see the `Resources/meta/LICENSE` file for details
 
 **MailChimp API Method Supported**
