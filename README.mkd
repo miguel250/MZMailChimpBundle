@@ -6,7 +6,7 @@ Symfony2 bundle for [MailChimp](http://apidocs.mailchimp.com/api/1.3/index.php) 
 
 `1. listSubscribe`
 
-Need support for a method not on the list submit an [issue]()
+Need support for a method not on the list submit an [issue](MZMailChimpBundle/issues/new)
 
 ## Setup
 **Using Submodule**
