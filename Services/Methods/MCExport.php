@@ -17,7 +17,7 @@ class MCExport extends HttpClient
 {
 
     /**
-     * Dump member of a list
+     * Dump members of a list
      *
      * @return array
      */
