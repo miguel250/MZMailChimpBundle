@@ -31,11 +31,10 @@ class MCExport extends HttpClient
 
        $result = str_replace(array('[',']','"'), "", $result[0]);
        $header = explode(",", $result[0]);
-       $reverse =array_reverse($result);
-       array_pop($reverse);
+       unset($result[0]);
 
        $data = array();
-       foreach ($reverse as $value) {
+       foreach ($result as $value) {
            $member = explode(",", $value);
            $data[] = array_combine($header, $member);
        }
