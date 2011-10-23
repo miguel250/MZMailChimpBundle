@@ -32,12 +32,11 @@ class HttpClient
     /**
      * Send API request to mailchimp
      *
-     * @return array
+     * @return string
      */
     protected function makeRequest($apiCall, $payload)
     {
         $payload['apikey'] = $this->apiKey;
-        $data = json_encode($payload);
         $url = 'https://'. $this->dataCenter . '.api.mailchimp.com/' . $apiCall;
 
         $ch = curl_init();
@@ -45,16 +44,16 @@ class HttpClient
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_USERAGENT, "MZMailChimpBundle");
         curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, urlencode($data));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($payload));
 
         $result = curl_exec($ch);
         curl_close($ch);
         $data = json_decode($result);
 
         if (!empty($data->error)) {
-            throw new \Exception("$data->code $data->error");
+           throw new \Exception("$data->code $data->error");
         } else {
-            return $data;
+            return $result;
         }
     }
 

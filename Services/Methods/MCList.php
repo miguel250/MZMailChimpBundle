@@ -104,7 +104,8 @@ class MCList extends HttpClient
 
         $apiCall = '1.3/?method=listSubscribe';
         $data = $this->makeRequest($apiCall ,$payload);
-
+        $data = json_decode($data);
+        
         if (empty($data)) {
             return false;
         } else {
