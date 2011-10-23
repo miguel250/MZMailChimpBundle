@@ -13,7 +13,7 @@ namespace MZ\MailChimpBundle\Services;
 
 class HttpClient
 {
-    protected $url = "http://us2.api.mailchimp.com/1.3/";
+    protected $dataCenter;
     protected $apiKey;
 
     /**
@@ -21,11 +21,11 @@ class HttpClient
      *
      * @return array
      */
-    protected function makeRequest($type, $payload)
+    protected function makeRequest($type, $api, $payload)
     {
         $payload['apikey'] = $this->apiKey;
         $data = json_encode($payload);
-        $url = $this->url . '?method=' . $type;
+        $url = 'https://'. $this->dataCenter . '.api.mailchimp.com/' . $api . '/?method=' . $type;
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);

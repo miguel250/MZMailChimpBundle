@@ -30,10 +30,11 @@ class MCList extends HttpClient
      * @param string $apiKey
      * @param string $listId
      */
-    public function __construct($apiKey, $listId)
+    public function __construct($apiKey, $listId, $dataCenter)
     {
         $this->apiKey = $apiKey;
         $this->listId = $listId;
+        $this->dataCenter = $dataCenter;
     }
 
     /**
@@ -114,9 +115,10 @@ class MCList extends HttpClient
             'replace_interests' => $this->replaceInterests,
             'send_welcome' => $this->sendWelcome);
 
-        $data = $this->makeRequest('listSubscribe', $payload);
+        $api = '1.3';
+        $data = $this->makeRequest('listSubscribe', $api ,$payload);
 
-        if (!empty($data->error)) {
+        if (empty($data)) {
             return false;
         } else {
             return true;

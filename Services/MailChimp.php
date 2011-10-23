@@ -16,6 +16,7 @@ class MailChimp
 
     private $apiKey;
     private $listId;
+    private $dataCenter;
 
     /**
      * Initializes MailChimp
@@ -27,6 +28,9 @@ class MailChimp
     {
         $this->apiKey = $apiKey;
         $this->listId = $listId;
+
+        $key = preg_split("/-/", $this->apiKey);
+        $this->dataCenter = $key[1];
 
         if (!function_exists('curl_init')) {
             throw new Exception('This bundle needs the cURL PHP extension.');
@@ -50,6 +54,6 @@ class MailChimp
      */
     public function getList()
     {
-        return new Methods\MCList($this->apiKey,  $this->listId);
+        return new Methods\MCList($this->apiKey,  $this->listId, $this->dataCenter);
     }
 }
