@@ -50,6 +50,6 @@ class MailChimp
      */
     public function getList()
     {
-        return new API\MCList($this->apiKey,  $this->listId);
+        return new Methods\MCList($this->apiKey,  $this->listId);
     }
 }

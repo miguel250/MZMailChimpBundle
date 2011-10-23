@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace MZ\MailChimpBundle\Services\API;
+namespace MZ\MailChimpBundle\Services\Methods;
 
 use MZ\MailChimpBundle\Services\HttpClient;
 
@@ -100,7 +100,7 @@ class MCList extends HttpClient
      * Subscribe member to list
      *
      * @param string $email
-     * 
+     *
      * @return boolen
      */
     public function addToList($email)
