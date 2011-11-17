@@ -56,7 +56,16 @@ class MailChimp
     {
         return new Methods\MCList($this->apiKey,  $this->listId, $this->dataCenter);
     }
-
+    
+    /**
+     * Get List Methods
+     *
+     * @return API\MCCampaign
+     */
+    public function getCampaign()
+    {
+    	 return new Methods\MCCampaign($this->apiKey,  $this->listId, $this->dataCenter);
+    }
     /**
      *  Get Export API
      *

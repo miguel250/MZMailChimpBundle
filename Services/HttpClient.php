@@ -15,6 +15,7 @@ class HttpClient
 {
     protected $dataCenter;
     protected $apiKey;
+    protected $listId;
 
     /**
      * Initializes Http client

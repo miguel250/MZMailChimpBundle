@@ -9,6 +9,7 @@ MZMailChimpBundle is licensed under the MIT License - see the `Resources/meta/LI
 
 1. `listSubscribe`
 2. `listUpdateMember`
+3. `campaignCreate`
 
 **MailChimp Export API Method Supported**
 
@@ -111,6 +112,22 @@ mz_mail_chimp:
         * Update user in mailing list
         **/
         $list->UpdateMember(); //boolean
+```
+
+**MailChimp API [create campaign](http://apidocs.mailchimp.com/api/1.3/campaigncreate.func.php) in a controller**
+
+``` php
+<?php
+        $mailChimp = $this->get('MailChimp');
+        $campaign = $mailChimp->getCampaign();
+        $campaign->setType($type);
+        $campaign->setSubject($subject);
+        $campaign->setFromEmail($fromEmail);
+        $campaign->setFromName($fromName);
+        $campaign->setHTML($html);
+
+
+        $data = $campaign->create(); //return campaign id
 ```
 
 **MailChimp Export API [List](http://apidocs.mailchimp.com/export/1.0/list.func.php)  in controller**
