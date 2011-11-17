@@ -278,7 +278,7 @@ class MCCampaign extends HttpClient
 				        'gallery_template_id' => $this->galleryTemplateId,
 				        'base_template_id'  => $this->baseTemplateId,
 				        'folder_id'  => $this->folderId,
-				        'tracking'  => $this->Tracking,
+				        'tracking'  => $this->tracking,
 				        'title'     => $this->title,
 				        'authenticate' => $this->authenticate,
 				        'analytics' => $this->analytics,
