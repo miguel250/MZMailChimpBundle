@@ -144,7 +144,7 @@ mz_mail_chimp:
 
 ```
 
-**MailChimp API [create campaign](http://apidocs.mailchimp.com/api/1.3/campaigncreate.func.php) in a controller**
+**MailChimp API [send campaign](http://apidocs.mailchimp.com/api/1.3/campaignsendnow.func.php) in a controller**
 
 ``` php
 <?php
