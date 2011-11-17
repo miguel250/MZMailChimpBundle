@@ -37,7 +37,9 @@ class HttpClient
     protected function makeRequest($apiCall, $payload)
     {
         $payload['apikey'] = $this->apiKey;
-        $url = 'https://'. $this->dataCenter . '.api.mailchimp.com/' . $apiCall;
+        $payload['id'] = $this->listId;
+        
+        $url = 'https://'. $this->dataCenter . '.api.mailchimp.com/1.3/?method=' . $apiCall;
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);

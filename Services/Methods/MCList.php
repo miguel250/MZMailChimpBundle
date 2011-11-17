@@ -22,6 +22,8 @@ class MCList extends HttpClient
     private $updateExisting = false;
     private $replaceInterests = true;
     private $sendWelcome = false;
+    private $email;
+    private $mergeVars = array();
 
     /**
      * Set mailchimp merge
@@ -84,32 +86,75 @@ class MCList extends HttpClient
     }
 
     /**
+     * Set mailchimp merge_vars
+     * 
+     * @param string $email
+     * @param string $newEmail
+     * @param string $groupings
+     * @param string $optionIP
+     * @param string $optinTime
+     * @param array $mcLocation
+     */
+    public function MergeVars($email = null, $newEmail = null, $groupings = null, $optionIP = null, $optinTime = null, $mcLocation = null)
+    {
+    	$this->mergeVars['EMAIL'] = $email;
+    	$this->mergeVars['NEW-EMAIL'] = $newEmail;
+    	$this->mergeVars['GROUPINGS'] = $groupings;
+    	$this->mergeVars['OPTIN_IP'] =  $optionIP;
+    	$this->mergeVars['OPTIN_TIME'] = $optinTime;
+    	$this->mergeVars['MC_LOCATION'] = $mcLocation;
+    }
+    
+    /**
+     * Set user email
+     * 
+     * @param string $email
+     */
+    
+    public function setEmail($email) 
+    {
+    	$this->email = $email;
+    }
+    
+    /**
      * Subscribe member to list
      *
      * @param string $email
      *
      * @return boolen
      */
-    public function Subscribe($email)
+    public function Subscribe($email = null)
     {
-        $payload = array('id' => $this->listId,
-            'email_address' => $email,
+    	if(!empty($email)) {
+    		$this->email = $email;
+    	}
+    	
+        $payload = array('email_address' => $this->email,
             'merge_vars' => $this->merge,
             'email_type' => $this->emailType,
             'double_optin' => $this->doubleOptin,
             'update_existing' => $this->updateExisting,
             'replace_interests' => $this->replaceInterests,
-            'send_welcome' => $this->sendWelcome);
+            'send_welcome' => $this->sendWelcome,
+        	 'merge_vars' => $this->mergeVars);
 
-        $apiCall = '1.3/?method=listSubscribe';
+        $apiCall = 'listSubscribe';
         $data = $this->makeRequest($apiCall, $payload);
         $data = json_decode($data);
 
-        if (empty($data)) {
-            return false;
-        } else {
-            return true;
-        }
+        return $data;
+    }
+    
+    public function UpdateMember()
+    {
+    	$payload = array( 'email_address' => $this->email,
+    			'merge_vars' => $this->mergeVars,
+    			'email_type' => $this->emailType,);
+    	
+    	$apiCall = 'listUpdateMember';
+    	$data = $this->makeRequest($apiCall, $payload);
+    	$data = json_decode($data);
+    	return $data;
     }
 
 }
