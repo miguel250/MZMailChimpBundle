@@ -322,4 +322,37 @@ class MCCampaign extends HttpClient
 		return $data;
 	}
 
+	/**
+	 * Send test compaign
+	 *
+	 * @param string $campaignId
+	 * @param array  $emails
+	 * @return boolean
+	 */
+	public function SendTest($campaignId, $emails)
+	{
+		$payload = array( 'cid' => $campaignId,
+				          'test_emails' => $emails);
+		
+		$apiCall = 'campaignSendTest';
+		$data = $this->makeRequest($apiCall, $payload);
+		$data = json_decode($data);
+		return $data;
+	}
+	
+	/**
+	 * Send compaign
+	 * 
+	 * @param string $campaignId
+	 * @return boolean
+	 */
+	public function SendNow($campaignId)
+	{
+		$payload = array( 'cid' => $campaignId);
+				
+		$apiCall = 'campaignSendNow';
+		$data = $this->makeRequest($apiCall, $payload);
+		$data = json_decode($data);
+		return $data;
+	}
 }
