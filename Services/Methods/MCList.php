@@ -103,6 +103,7 @@ class MCList extends HttpClient
     	$this->mergeVars['OPTIN_IP'] =  $optionIP;
     	$this->mergeVars['OPTIN_TIME'] = $optinTime;
     	$this->mergeVars['MC_LOCATION'] = $mcLocation;
+    	$this->mergeVars = array_merge($this->mergeVars, $this->merge);
     }
     
     /**
