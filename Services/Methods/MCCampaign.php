@@ -155,7 +155,6 @@ class MCCampaign extends HttpClient
 		$this->tracking['opens'] = $opens;
 		$this->tracking['html_clicks'] = $htmlClicks;
 		$this->tracking['text_clicks'] = $textClicks;
-		$this->tracking = $tracker;
 	}
 	
 	/**
@@ -279,7 +278,7 @@ class MCCampaign extends HttpClient
 				        'gallery_template_id' => $this->galleryTemplateId,
 				        'base_template_id'  => $this->baseTemplateId,
 				        'folder_id'  => $this->folderId,
-				        'tracking'  => $this->tracking,
+				        'tracking'  => $this>getTracking(),
 				        'title'     => $this->title,
 				        'authenticate' => $this->authenticate,
 				        'analytics' => $this->analytics,
