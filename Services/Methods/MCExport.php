@@ -25,7 +25,7 @@ class MCExport extends HttpClient
     {
        $api = 'export/1.0/list/';
        $payload = array('id' => $this->listId);
-       $data = $this->makeRequest($api ,$payload);
+       $data = $this->makeRequest($api ,$payload,true);
 
        preg_match_all("/\[.*]/",  $data, $result);
 
