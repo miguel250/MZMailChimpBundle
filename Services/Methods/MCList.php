@@ -137,7 +137,7 @@ class MCList extends HttpClient
             'update_existing' => $this->updateExisting,
             'replace_interests' => $this->replaceInterests,
             'send_welcome' => $this->sendWelcome,
-        	 'merge_vars' => $this->mergeVars);
+        	 'merge_vars' => $this->merge);
 
         $apiCall = 'listSubscribe';
         $data = $this->makeRequest($apiCall, $payload);
