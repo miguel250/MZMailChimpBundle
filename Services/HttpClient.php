@@ -33,7 +33,7 @@ class HttpClient
 	/**
 	 * Send API request to mailchimp
 	 *
-	 * @return string
+	 * @return json
 	 */
 	protected function makeRequest($apiCall, $payload, $export = false)
 	{
@@ -54,13 +54,8 @@ class HttpClient
 
 		$result = curl_exec($ch);
 		curl_close($ch);
-		$data = json_decode($result);
-
-		if (!empty($data->error)) {
-			throw new \Exception("$data->code $data->error");
-		} else {
-			return $result;
-		}
+		
+		return $result;
 	}
 
 }
