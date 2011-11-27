@@ -38,6 +38,16 @@ class MailChimp
     }
 
     /**
+     * Get Mailchimp api key
+     *
+     * @return string
+     */
+    public function getAPIkey()
+    {
+    	return $this->apiKey;
+    }
+    
+    /**
      * Set mailing list id
      *
      * @param string $listId
@@ -47,6 +57,16 @@ class MailChimp
         $this->listId = $listId;
     }
 
+    /**
+     * get mailing list id
+     *
+     * @return string $listId
+     */
+    public function getListID()
+    {
+    	return $this->listId;
+    }
+    
     /**
      * Get List Methods
      *
