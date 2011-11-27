@@ -11,6 +11,11 @@
 
 namespace MZ\MailChimpBundle\Services;
 
+/**
+ * Mailchimp
+ *
+ * @author Miguel Perez <miguel@mlpz.mp>
+ */
 class MailChimp
 {
 
@@ -21,8 +26,8 @@ class MailChimp
     /**
      * Initializes MailChimp
      *
-     * @param string $apiKey
-     * @param string $listId
+     * @param string $apiKey Mailchimp api key
+     * @param string $listId Default mailing list id
      */
     public function __construct($apiKey, $listId)
     {
@@ -44,13 +49,13 @@ class MailChimp
      */
     public function getAPIkey()
     {
-    	return $this->apiKey;
+        return $this->apiKey;
     }
-    
+
     /**
      * Set mailing list id
      *
-     * @param string $listId
+     * @param string $listId mailing list id
      */
     public function setListID($listId)
     {
@@ -64,9 +69,9 @@ class MailChimp
      */
     public function getListID()
     {
-    	return $this->listId;
+        return $this->listId;
     }
-    
+
     /**
      * Get List Methods
      *
@@ -74,9 +79,9 @@ class MailChimp
      */
     public function getList()
     {
-        return new Methods\MCList($this->apiKey,  $this->listId, $this->dataCenter);
+        return new Methods\MCList($this->apiKey, $this->listId, $this->dataCenter);
     }
-    
+
     /**
      * Get List Methods
      *
@@ -84,10 +89,11 @@ class MailChimp
      */
     public function getCampaign()
     {
-    	 return new Methods\MCCampaign($this->apiKey,  $this->listId, $this->dataCenter);
+        return new Methods\MCCampaign($this->apiKey, $this->listId, $this->dataCenter);
     }
+
     /**
-     *  Get Export API
+     * Get Export API
      *
      * @return Methods\MCExport
      */

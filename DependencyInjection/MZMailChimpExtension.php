@@ -2,15 +2,14 @@
 
 /*
  * This file is part of the MZ\MailChimpBundle
-*
-* (c) Miguel Perez <miguel@mlpz.com>
-*
-* This source file is subject to the MIT license that is bundled
-* with this source code in the file LICENSE.
-*/
+ *
+ * (c) Miguel Perez <miguel@mlpz.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
 
 namespace MZ\MailChimpBundle\DependencyInjection;
-
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
@@ -31,41 +30,42 @@ class MZMailChimpExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.xml');
 
         foreach (array('api_key', 'default_list') as $attribute) {
             if (isset($config[$attribute])) {
-                $container->setParameter('mz_mail_chimp.'.$attribute, $config[$attribute]);
+                $container->setParameter('mz_mail_chimp.' . $attribute, $config[$attribute]);
             }
         }
     }
-    
+
     /**
      * @codeCoverageIgnore
      */
     public function getXsdValidationBasePath()
     {
-    	return __DIR__ . '/../Resources/config/schema';
+        return __DIR__ . '/../Resources/config/schema';
     }
-    
+
     /**
      * @codeCoverageIgnore
+     * @return string
      */
     public function getNamespace()
     {
-    	return 'http://symfony.com/schema/dic/mz_mailchimp';
+        return 'http://symfony.com/schema/dic/mz_mailchimp';
     }
-    
+
     /**
      * @codeCoverageIgnore
      */
     protected function loadDefaults($container)
     {
-    	$loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-    
-    	foreach ($this->resources as $resource) {
-    		$loader->load($resource);
-    	}
+        $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+
+        foreach ($this->resources as $resource) {
+            $loader->load($resource);
+        }
     }
 }

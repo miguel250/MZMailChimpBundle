@@ -13,6 +13,12 @@ namespace MZ\MailChimpBundle\Services\Methods;
 
 use MZ\MailChimpBundle\Services\HttpClient;
 
+/**
+ * Mailchimp Export api
+ *
+ * @author Miguel Perez <miguel@mlpz.mp>
+ * @link   http://apidocs.mailchimp.com/export/1.0/
+ */
 class MCExport extends HttpClient
 {
 
@@ -23,23 +29,23 @@ class MCExport extends HttpClient
      */
     public function DumpList()
     {
-       $api = 'export/1.0/list/';
-       $payload = array('id' => $this->listId);
-       $data = $this->makeRequest($api ,$payload,true);
+        $api = 'export/1.0/list/';
+        $payload = array('id' => $this->listId);
+        $data = $this->makeRequest($api, $payload, true);
 
-       preg_match_all("/\[.*]/",  $data, $result);
+        preg_match_all("/\[.*]/", $data, $result);
 
-       $result = str_replace(array('[',']','"'), "", $result[0]);
-       $header = explode(",", $result[0]);
-       unset($result[0]);
+        $result = str_replace(array('[', ']', '"'), "", $result[0]);
+        $header = explode(",", $result[0]);
+        unset($result[0]);
 
-       $data = array();
-       foreach ($result as $value) {
-           $member = explode(",", $value);
-           $data[] = array_combine($header, $member);
-       }
+        $data = array();
+        foreach ($result as $value) {
+            $member = explode(",", $value);
+            $data[] = array_combine($header, $member);
+        }
 
-       return $data;
+        return $data;
     }
 
 }

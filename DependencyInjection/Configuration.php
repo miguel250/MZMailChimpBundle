@@ -2,15 +2,14 @@
 
 /*
  * This file is part of the MZ\MailChimpBundle
-*
-* (c) Miguel Perez <miguel@mlpz.com>
-*
-* This source file is subject to the MIT license that is bundled
-* with this source code in the file LICENSE.
-*/
+ *
+ * (c) Miguel Perez <miguel@mlpz.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
 
 namespace MZ\MailChimpBundle\DependencyInjection;
-
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -23,6 +22,7 @@ class Configuration implements ConfigurationInterface
 {
     /**
      * {@inheritDoc}
+     * @return treeBuilder
      */
     public function getConfigTreeBuilder()
     {
@@ -30,9 +30,15 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('mz_mail_chimp');
 
         $rootNode->children()
-        ->scalarNode('api_key')->isRequired()->cannotBeEmpty()->end()
-        ->scalarNode('default_list')->isRequired()->cannotBeEmpty()->end()
-        ->end();
+                ->scalarNode('api_key')
+                ->isRequired()
+                ->cannotBeEmpty()
+                ->end()
+                ->scalarNode('default_list')
+                ->isRequired()
+                ->cannotBeEmpty()
+                ->end()
+                ->end();
 
         return $treeBuilder;
     }

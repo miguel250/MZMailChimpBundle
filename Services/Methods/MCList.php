@@ -13,6 +13,12 @@ namespace MZ\MailChimpBundle\Services\Methods;
 
 use MZ\MailChimpBundle\Services\HttpClient;
 
+/**
+ * Mailchimp List method
+ *
+ * @author Miguel Perez <miguel@mlpz.mp>
+ * @link   http://apidocs.mailchimp.com/api/1.3/#listrelated
+ */
 class MCList extends HttpClient
 {
 
@@ -28,7 +34,7 @@ class MCList extends HttpClient
     /**
      * Set mailchimp merge
      *
-     * @param array $merge
+     * @param array $merge subscribe merge
      */
     public function setMerge(array $merge)
     {
@@ -38,7 +44,7 @@ class MCList extends HttpClient
     /**
      * Set mailchimp email type
      *
-     * @param string $emailType
+     * @param string $emailType string to send email type
      */
     public function setEmailType($emailType)
     {
@@ -48,7 +54,7 @@ class MCList extends HttpClient
     /**
      * Set mailchimp double optin
      *
-     * @param boolean $doubleOptin
+     * @param boolean $doubleOptin boolen to double optin
      */
     public function setDoubleOption($doubleOptin)
     {
@@ -58,7 +64,7 @@ class MCList extends HttpClient
     /**
      * Set mailchimp update existing
      *
-     * @param boolean $updateExisting
+     * @param boolean $updateExisting boolean to update user
      */
     public function setUpdateExisting($updateExisting)
     {
@@ -68,7 +74,7 @@ class MCList extends HttpClient
     /**
      * Set mailchimp replace interests
      *
-     * @param boolean $replaceInterests
+     * @param boolean $replaceInterests boolean to replace intersests
      */
     public function setReplaceInterests($replaceInterests)
     {
@@ -78,65 +84,64 @@ class MCList extends HttpClient
     /**
      * Set mailchimp send welcome
      *
-     * @param boolean $sendWelcome
+     * @param boolean $sendWelcome boolen to send welcome email
      */
     public function SendWelcome($sendWelcome)
     {
         $this->sendWelcome = $sendWelcome;
     }
 
-    /**
-     * Set mailchimp merge_vars
-     * 
-     * @param string $email
-     * @param string $newEmail
-     * @param string $groupings
-     * @param string $optionIP
-     * @param string $optinTime
-     * @param array $mcLocation
-     */
+   /**
+    * Set mailchimp merge_vars
+    * 
+    * @param unknown_type $email      Old user email
+    * @param unknown_type $newEmail   New user email
+    * @param unknown_type $groupings  User group
+    * @param unknown_type $optionIP   User ip addres
+    * @param unknown_type $optinTime  Subcribe time
+    * @param unknown_type $mcLocation Use location
+    */
     public function MergeVars($email = null, $newEmail = null, $groupings = null, $optionIP = null, $optinTime = null, $mcLocation = null)
     {
-    	$this->mergeVars['EMAIL'] = $email;
-    	$this->mergeVars['NEW-EMAIL'] = $newEmail;
-    	$this->mergeVars['GROUPINGS'] = $groupings;
-    	$this->mergeVars['OPTIN_IP'] =  $optionIP;
-    	$this->mergeVars['OPTIN_TIME'] = $optinTime;
-    	$this->mergeVars['MC_LOCATION'] = $mcLocation;
-    	$this->mergeVars = array_merge($this->mergeVars, $this->merge);
+        $this->mergeVars['EMAIL'] = $email;
+        $this->mergeVars['NEW-EMAIL'] = $newEmail;
+        $this->mergeVars['GROUPINGS'] = $groupings;
+        $this->mergeVars['OPTIN_IP'] = $optionIP;
+        $this->mergeVars['OPTIN_TIME'] = $optinTime;
+        $this->mergeVars['MC_LOCATION'] = $mcLocation;
+        $this->mergeVars = array_merge($this->mergeVars, $this->merge);
     }
-    
+
     /**
      * Set user email
      * 
-     * @param string $email
+     * @param string $email user email
      */
-    
-    public function setEmail($email) 
+
+    public function setEmail($email)
     {
-    	$this->email = $email;
+        $this->email = $email;
     }
-    
+
     /**
      * Subscribe member to list
      *
-     * @param string $email
+     * @param string $email user email
      *
      * @return boolen
      */
     public function Subscribe($email = null)
     {
-    	if(!empty($email)) {
-    		$this->email = $email;
-    	}
-    	
+        if (!empty($email)) {
+            $this->email = $email;
+        }
+
         $payload = array('email_address' => $this->email,
-            'merge_vars' => $this->merge,
-            'email_type' => $this->emailType,
-            'double_optin' => $this->doubleOptin,
-            'update_existing' => $this->updateExisting,
-            'replace_interests' => $this->replaceInterests,
-            'send_welcome' => $this->sendWelcome,);
+                'merge_vars' => $this->merge, 'email_type' => $this->emailType,
+                'double_optin' => $this->doubleOptin,
+                'update_existing' => $this->updateExisting,
+                'replace_interests' => $this->replaceInterests,
+                'send_welcome' => $this->sendWelcome,);
 
         $apiCall = 'listSubscribe';
         $data = $this->makeRequest($apiCall, $payload);
@@ -144,17 +149,22 @@ class MCList extends HttpClient
 
         return $data;
     }
-    
+
+    /**
+     * Update member
+     * 
+     * @return array
+     */
     public function UpdateMember()
     {
-    	$payload = array( 'email_address' => $this->email,
-    			'merge_vars' => $this->mergeVars,
-    			'email_type' => $this->emailType,);
-    	
-    	$apiCall = 'listUpdateMember';
-    	$data = $this->makeRequest($apiCall, $payload);
-    	$data = json_decode($data);
-    	return $data;
+        $payload = array('email_address' => $this->email,
+                'merge_vars' => $this->mergeVars,
+                'email_type' => $this->emailType,);
+
+        $apiCall = 'listUpdateMember';
+        $data = $this->makeRequest($apiCall, $payload);
+        $data = json_decode($data);
+        return $data;
     }
 
 }
