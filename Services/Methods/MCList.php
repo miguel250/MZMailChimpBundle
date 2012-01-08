@@ -30,6 +30,9 @@ class MCList extends HttpClient
     private $sendWelcome = false;
     private $email;
     private $mergeVars = array();
+    private $deleteMember = true;
+    private $sendGoodbye = false;
+    private $sendNotify = false;
 
     /**
      * Set mailchimp merge
@@ -144,6 +147,28 @@ class MCList extends HttpClient
                 'send_welcome' => $this->sendWelcome,);
 
         $apiCall = 'listSubscribe';
+        $data = $this->makeRequest($apiCall, $payload);
+        $data = json_decode($data);
+
+        return $data;
+    }
+
+    /**
+     * Subscribe member to list
+     *
+     * @param string $email user email
+     *
+     * @return boolen
+     */
+    public function UnSubscribe($email)
+    {
+
+        $payload = array('email_address' => $email,
+                'delete_member' => $this->deleteMember,
+                'send_goodbye' => $this->sendGoodbye,
+                'send_notify' => $this->sendNotify,);
+
+        $apiCall = 'listUnsubscribe';
         $data = $this->makeRequest($apiCall, $payload);
         $data = json_decode($data);
 
