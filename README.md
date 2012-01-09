@@ -9,10 +9,11 @@ MZMailChimpBundle is licensed under the MIT License - see the `Resources/meta/LI
 **MailChimp API Method Supported**
 
 1. `listSubscribe`
-2. `listUpdateMember`
-3. `campaignCreate`
-4. `campaignSendTest`
-5. `campaignSendNow`
+2. `listUnSubscribe`
+3. `listUpdateMember`
+4. `campaignCreate`
+5. `campaignSendTest`
+6. `campaignSendNow`
 
 **MailChimp Export API Method Supported**
 
@@ -100,6 +101,28 @@ mz_mail_chimp:
          * Subscribe user to list
          * */
         $list->Subscribe($email); //boolean
+```
+
+**MailChimp API [Unsubscribe](http://apidocs.mailchimp.com/api/1.3/listunsubscribe.func.php) remove user from mailing list in a controller**
+
+``` php
+<?php
+        $mailChimp = $this->get('MailChimp');
+
+        /**
+         * Change mailing list
+         * */
+        $mailChimp->setListID($id);
+
+        /**
+         * Get list methods
+         * */
+        $list = $mailChimp->getList();
+
+        /**
+         * UnSubscribe user from list
+         * */
+        $list->UnSubscribe($email); //boolean
 ```
 
 **MailChimp API [Update](http://apidocs.mailchimp.com/api/1.3/listupdatemember.func.php) user in a controller**
