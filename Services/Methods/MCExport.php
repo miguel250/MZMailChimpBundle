@@ -24,13 +24,15 @@ class MCExport extends HttpClient
 
     /**
      * Dump members of a list
-     *
+     * 
+     * @param $options options
      * @return array
      */
-    public function DumpList()
+    public function DumpList($options = array())
     {
         $api = 'export/1.0/list/';
-        $payload = array('id' => $this->listId);
+        $payload = array_merge(array('id' => $this->listId), $options);
+        var_dump($payload);
         $data = $this->makeRequest($api, $payload, true);
 
         preg_match_all("/\[.*]/", $data, $result);

@@ -184,6 +184,7 @@ mz_mail_chimp:
 <?php
        $mailChimp = $this->get('MailChimp');
        $export = $mailChimp->getExport();
+       $options = array('status' => 'unsubscribed'); //subscribed, unsubscribed, cleaned
        $export->DumpList(); //return array
 
 ```
