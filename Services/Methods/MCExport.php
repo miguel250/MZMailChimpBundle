@@ -34,7 +34,7 @@ class MCExport extends HttpClient
         $payload = array_merge(array('id' => $this->listId), $options);
         $data = $this->makeRequest($api, $payload, true);
 
-        preg_match_all("/\[.*]/", $data, $result);
+        preg_match_all("/\[([^\]]+)\]/", $data, $result);
 
         $result = str_replace(array('[', ']', '"'), "", $result[0]);
         $header = explode(",", $result[0]);
