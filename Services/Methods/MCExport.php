@@ -34,16 +34,17 @@ class MCExport extends HttpClient
         $payload = array_merge(array('id' => $this->listId), $options);
         $data = $this->makeRequest($api, $payload, true);
 
-        preg_match_all("/\[([^\]]+)\]/", $data, $result);
+        $result = preg_split ('/$\R?^/m', $data);
 
-        $result = str_replace(array('[', ']', '"'), "", $result[0]);
-        $header = explode(",", $result[0]);
+        $header = str_replace(array('[', ']', '"'), "", $result[0]);
+        $headerArray = explode(",", $header);
         unset($result[0]);
 
         $data = array();
         foreach ($result as $value) {
-            $member = explode(",", $value);
-            $data[] = array_combine($header, $member);
+            $clean = str_replace(array('[', ']', '"'), "", $value);
+            $cleanArray = explode(",", $clean);
+            $data[] = array_combine($headerArray, $cleanArray);
         }
 
         return $data;
