@@ -11,8 +11,11 @@
 
 namespace MZ\MailChimpBundle\Services;
 
+use  Buzz\Browser,
+     Buzz\Client\Curl;
+
 /**
- * Curl client
+ * HTTP client
  *
  * @author Miguel Perez <miguel@mlpz.mp>
  */
@@ -57,17 +60,12 @@ class HttpClient
             $url = 'https://' . $this->dataCenter
                     . '.api.mailchimp.com/1.3/?method=' . $apiCall;
         }
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_USERAGENT, "MZMailChimpBundle");
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($payload));
+        $curl = new Curl();
+        $curl->setOption(CURLOPT_USERAGENT, 'MZMailChimpBundle');
+        $browser = new Browser($curl);
+        $response = $browser->post($url, array(), $payload);
 
-        $result = curl_exec($ch);
-        curl_close($ch);
-
-        return $result;
+        return $response->getContent();
     }
 
 }
