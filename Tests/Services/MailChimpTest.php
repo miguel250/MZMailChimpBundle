@@ -20,19 +20,6 @@ use MZ\MailChimpBundle\Services\MailChimp;
  */
 class MailChimpTest extends \PHPUnit_Framework_TestCase
 {
-
-    /**
-     * Test MailChimp class
-     * 
-     * @covers MZ\MailChimpBundle\Services\MailChimp
-     */
-    public function testMailChimp()
-    {
-        $mailChimp = $this
-                ->getMockBuilder('MZ\MailChimpBundle\Services\MailChimp')
-                ->disableOriginalConstructor()->getMock();
-    }
-
     /**
      * Test MailChimp constructor
      * 
