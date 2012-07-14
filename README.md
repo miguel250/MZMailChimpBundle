@@ -1,6 +1,6 @@
 # MZMailChimpBundle
 Symfony2 bundle for [MailChimp](http://apidocs.mailchimp.com/api/1.3/index.php) API And [Export API](http://apidocs.mailchimp.com/export/1.0/)
-[![Build Status](https://secure.travis-ci.org/miguel250/MZMailChimpBundle.png)](http://travis-ci.org/miguel250/MZMailChimpBundle)
+[![Build Status](https://secure.travis-ci.org/miguel250/MZMailChimpBundle.png?branch=master)](http://travis-ci.org/miguel250/MZMailChimpBundle)
 
 **License**
 
