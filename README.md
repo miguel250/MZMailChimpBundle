@@ -25,11 +25,15 @@ Need support for a method not on the list submit an [issue](MZMailChimpBundle/is
 **Using Submodule**
 
     git submodule add https://github.com/miguel250/MZMailChimpBundle.git vendor/bundles/MZ/MailChimpBundle
+    git submodule add https://github.com/kriswallsmith/Buzz.git  vendor/buzz
 **Using the vendors script**
 
       [MZMailChimpBundle]
           git=https://github.com/miguel250/MZMailChimpBundle.git
           target=bundles/MZ/MailChimpBundle
+      [buzz]
+          git=https://github.com/kriswallsmith/Buzz.git
+          target=buzz/
 **Add the MZ namespace to autoloader**
 
 ``` php
@@ -187,4 +191,12 @@ mz_mail_chimp:
        $options = array('status' => 'unsubscribed'); //subscribed, unsubscribed, cleaned
        $export->DumpList($options); //return array
 
+```
+
+**MailChimp API [Listmemberinfo](http://apidocs.mailchimp.com/api/rtfm/listmemberinfo.func.php) in controller**
+``` php
+<?php
+       $mailChimp = $this->get('MailChimp');
+       $list = $mailChimp->getList();
+       $list->getMemberInfo($email) 
 ```
