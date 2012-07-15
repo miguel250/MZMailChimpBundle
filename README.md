@@ -42,6 +42,7 @@ Need support for a method not on the list submit an [issue](MZMailChimpBundle/is
    $loader->registerNamespaces(array(
     // ...
     'MZ'               => __DIR__.'/../vendor/bundles',
+    'Buzz'             => __DIR__.'/../vendor/buzz/lib',
   ));
 ```
 **Add MZMailChimpBundle to your application kernel**
