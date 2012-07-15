@@ -191,5 +191,17 @@ class MCList extends HttpClient
         $data = json_decode($data);
         return $data;
     }
-
+	
+	/**
+	* Get info about a member
+	*
+	* @return object
+	*/
+	public function getMemberInfo($email) 
+	{
+		$payload = array('email_address' => $email);
+		$apiCall = 'listMemberInfo';
+		$data = $this->makeRequest($apiCall, $payload);
+		return json_decode($data);
+	}
 }
