@@ -63,7 +63,7 @@ class HttpClient
         $curl = new Curl();
         $curl->setOption(CURLOPT_USERAGENT, 'MZMailChimpBundle');
         $browser = new Browser($curl);
-        $response = $browser->post($url, array(), $payload);
+        $response = $browser->post($url, array(), http_build_query($payload));
 
         return $response->getContent();
     }
