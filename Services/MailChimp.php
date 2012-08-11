@@ -38,7 +38,7 @@ class MailChimp
         $this->dataCenter = $key[1];
 
         if (!function_exists('curl_init')) {
-            throw new Exception('This bundle needs the cURL PHP extension.');
+            throw new \Exception('This bundle needs the cURL PHP extension.');
         }
     }
 
