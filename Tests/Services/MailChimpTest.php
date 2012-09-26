@@ -33,6 +33,23 @@ class MailChimpTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('12b6c7e6c4', $mailchimp->getListID());
 
     }
+    
+    /**
+     * Test MailChimp constructor
+     * 
+     * @covers MZ\MailChimpBundle\Services\MailChimp::__construct
+     */
+    public function testDatacenter()
+    {
+        $mailchimp = new MailChimp('23212312-us2', '12b6c7e6c4', true);
+
+        $this->assertEquals('https://us2.api.mailchimp.com/', $mailchimp->getDatacenter());
+        
+        $mailchimp2 = new MailChimp('23212312-us2', '12b6c7e6c4', false);
+
+        $this->assertEquals('http://us2.api.mailchimp.com/', $mailchimp2->getDatacenter());
+
+    }
 
     /**
      * Test ListID

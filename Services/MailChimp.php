@@ -29,13 +29,18 @@ class MailChimp
      * @param string $apiKey Mailchimp api key
      * @param string $listId Default mailing list id
      */
-    public function __construct($apiKey, $listId)
+    public function __construct($apiKey, $listId, $ssl = true)
     {
         $this->apiKey = $apiKey;
         $this->listId = $listId;
 
         $key = preg_split("/-/", $this->apiKey);
-        $this->dataCenter = $key[1];
+        
+        if($ssl) {
+            $this->dataCenter ='https://' . $key[1] . '.api.mailchimp.com/';
+        }else {
+            $this->dataCenter ='http://' . $key[1] . '.api.mailchimp.com/';
+        }
 
         if (!function_exists('curl_init')) {
             throw new \Exception('This bundle needs the cURL PHP extension.');
@@ -70,6 +75,16 @@ class MailChimp
     public function getListID()
     {
         return $this->listId;
+    }
+    
+    /**
+     * get mailing list id
+     *
+     * @return string $listId
+     */
+    public function getDatacenter()
+    {
+        return $this->dataCenter;
     }
 
     /**
