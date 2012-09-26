@@ -56,7 +56,8 @@ class MCList extends HttpClient
 
     /**
      * Set mailchimp double optin
-     *
+     * 
+     * @deprecated due to spelling mistake
      * @param boolean $doubleOptin boolen to double optin
      */
     public function setDoubleOption($doubleOptin)
