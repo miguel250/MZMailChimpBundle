@@ -54,11 +54,9 @@ class HttpClient
         $payload['id'] = $this->listId;
 
         if ($export) {
-            $url = 'https://' . $this->dataCenter . '.api.mailchimp.com/'
-                    . $apiCall;
+            $url = $this->dataCenter . $apiCall;
         } else {
-            $url = 'https://' . $this->dataCenter
-                    . '.api.mailchimp.com/1.3/?method=' . $apiCall;
+            $url = $this->dataCenter . '1.3/?method=' . $apiCall;
         }
         $curl = new Curl();
         $curl->setOption(CURLOPT_USERAGENT, 'MZMailChimpBundle');

@@ -66,6 +66,7 @@ public function registerBundles()
 mz_mail_chimp:
   api_key: #Mailchimp API Key
   default_list: #default list id
+  ssl: true #option to use http or https
 ```
 ## Usage
 

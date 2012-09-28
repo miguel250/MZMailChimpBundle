@@ -33,7 +33,7 @@ class MZMailChimpExtension extends Extension
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.xml');
 
-        foreach (array('api_key', 'default_list') as $attribute) {
+        foreach (array('api_key', 'default_list', 'ssl') as $attribute) {
             if (isset($config[$attribute])) {
                 $container->setParameter('mz_mail_chimp.' . $attribute, $config[$attribute]);
             }

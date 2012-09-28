@@ -38,6 +38,9 @@ class Configuration implements ConfigurationInterface
                 ->isRequired()
                 ->cannotBeEmpty()
                 ->end()
+                ->booleanNode('ssl')
+                ->defaultTrue()
+                ->end()
                 ->end();
 
         return $treeBuilder;

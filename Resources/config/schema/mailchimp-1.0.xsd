@@ -10,6 +10,7 @@
     <xsd:complexType name="config">
         <xsd:attribute name="api_key" type="xsd:string" />
         <xsd:attribute name="default_list" type="xsd:string" />
+        <xsd:attribute name="ssl" type="xsd:boolean" />
     </xsd:complexType>
 
 </xsd:schema>
