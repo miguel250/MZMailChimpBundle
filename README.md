@@ -97,7 +97,7 @@ mz_mail_chimp:
          * */
         $list->setMerge($array);  //optional default: null
         $list->setEmailType('html'); //optional default: html
-        $list->setDoubleOption(true);  //optional default : true
+        $list->setDoubleOptin(true);  //optional default : true
         $list->setUpdateExisting(false); // optional default : false
         $list->setReplaceInterests(true);  // optional default : true
         $list->SendWelcome(false);  // optional default : false
