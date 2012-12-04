@@ -191,10 +191,10 @@ class MCList extends HttpClient
      * 
      * @return array
      */
-    public function UpdateMember()
+    public function UpdateMember($vars = array())
     {
         $payload = array('email_address' => $this->email,
-                'merge_vars' => $this->mergeVars,
+                'merge_vars' => $vars + $this->mergeVars,
                 'email_type' => $this->emailType,);
 
         $apiCall = 'listUpdateMember';
