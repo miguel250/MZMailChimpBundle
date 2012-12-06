@@ -155,7 +155,8 @@ mz_mail_chimp:
         $list = $mailChimp->getList();
         $list->listInterestGroupingAdd(
             $groupTitle, $groupType,
-            array($group1, $group2)  ); // integer grouping ID
+            array($group1, $group2)  
+        ); // integer grouping ID
                    
 ```
 
