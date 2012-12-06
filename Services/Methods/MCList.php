@@ -215,4 +215,25 @@ class MCList extends HttpClient
 		$data = $this->makeRequest($apiCall, $payload);
 		return json_decode($data);
 	}
+
+    /**
+     * Create new group with subgroups
+     *
+     * @param string $name group name
+     * @param string $type group type
+     * @param array $groups subgroups
+     *
+     * @return int group id
+     */
+    public function listInterestGroupingAdd($name, $type, $groups = array())
+    {
+        $payload = array(
+            'name' => $name,
+            'type' => $type,
+            'groups' => $groups,
+        );
+        $apiCall = 'listInterestGroupingAdd';
+        $data = $this->makeRequest($apiCall, $payload);
+        return json_decode($data);
+    }
 }
