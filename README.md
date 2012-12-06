@@ -11,9 +11,10 @@ MZMailChimpBundle is licensed under the MIT License - see the `Resources/meta/LI
 1. `listSubscribe`
 2. `listUnSubscribe`
 3. `listUpdateMember`
-4. `campaignCreate`
-5. `campaignSendTest`
-6. `campaignSendNow`
+4. `listInterestGroupingAdd`
+5. `campaignCreate`
+6. `campaignSendTest`
+7. `campaignSendNow`
 
 **MailChimp Export API Method Supported**
 
@@ -144,6 +145,18 @@ mz_mail_chimp:
         * Update user in mailing list
         **/
         $list->UpdateMember(); //boolean
+```
+
+**MailChimp API [Interest Grouping Add](http://apidocs.mailchimp.com/api/rtfm/listinterestgroupingadd.func.php) in a controller**
+
+``` php
+<?php
+        $mailChimp = $this->get('MailChimp');
+        $list = $mailChimp->getList();
+        $list->listInterestGroupingAdd(
+            $groupTitle, $groupType,
+            array($group1, $group2)  ); // integer grouping ID
+                   
 ```
 
 **MailChimp API [create campaign](http://apidocs.mailchimp.com/api/1.3/campaigncreate.func.php) in a controller**
