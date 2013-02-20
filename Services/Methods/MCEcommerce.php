@@ -258,6 +258,9 @@ class MCEcommerce extends HttpClient
         if($this->store_name) {
             $order['store_name'] = $this->store_name;
         }
+        if($this->campaign_id) {
+            $order['campaign_id'] = $this->campaign_id;
+        }
 
         $payload = array('order' => $order);
         
