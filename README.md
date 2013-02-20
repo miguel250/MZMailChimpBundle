@@ -216,3 +216,40 @@ mz_mail_chimp:
        $list = $mailChimp->getList();
        $list->getMemberInfo($email) 
 ```
+
+**MailChimp API [Import Ecommerce Order](http://apidocs.mailchimp.com/api/1.3/ecommorderadd.func.php) in controller**
+``` php
+<?php
+       $mailChimp = $this->get('MailChimp');
+       $ecommerce = $mailChimp->getEcommerce();
+
+       $ecommerce->setOrderId($orderId)
+       $ecommerce->setOrderDate($orderDate)
+       $ecommerce->setStoreId($storeId)
+       $ecommerce->setStoreName($storeName)
+       $ecommerce->setCampaignId($mailChimpCampaigId)
+       $ecommerce->setShipping($shippingTotal)
+       $ecommerce->setTax($taxTotal)
+       $ecommerce->setTotal($orderTotal)
+       $ecommerce->addItem($productId, $productName, $categoryId, $categoryName, $qty, $cost, $sku)
+       
+       $ecommerce->addOrder($email) //return boolean
+```
+
+**MailChimp API [Delete Ecommerce Order](http://apidocs.mailchimp.com/api/1.3/ecommorderdel.func.php) in controller**
+``` php
+<?php
+       $mailChimp = $this->get('MailChimp');
+       $ecommerce = $mailChimp->getEcommerce();
+       
+       $ecommerce->deleteOrder($storeId, $orderId) //return boolean
+```
+
+**MailChimp API [Retrieve Ecommerce Orders](http://apidocs.mailchimp.com/api/1.3/ecommorders.func.php) in controller**
+``` php
+<?php
+       $mailChimp = $this->get('MailChimp');
+       $ecommerce = $mailChimp->getEcommerce();
+       
+       $ecommerce->getOrder($pageStart, $batchLimit, $dateSince) //return array
+```
