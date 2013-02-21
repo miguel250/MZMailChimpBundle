@@ -90,7 +90,7 @@ class MailChimp
     /**
      * Get List Methods
      *
-     * @return API\MCList
+     * @return Methods\MCList
      */
     public function getList()
     {
@@ -100,7 +100,7 @@ class MailChimp
     /**
      * Get List Methods
      *
-     * @return API\MCCampaign
+     * @return Methods\MCCampaign
      */
     public function getCampaign()
     {
@@ -115,5 +115,15 @@ class MailChimp
     public function getExport()
     {
         return new Methods\MCExport($this->apiKey, $this->listId, $this->dataCenter);
+    }
+    
+    /**
+     * Get Ecommerce Methods
+     *
+     * @return Methods\MCEcommerce
+     */
+    public function getEcommerce()
+    {
+        return new Methods\MCEcommerce($this->apiKey, $this->listId, $this->dataCenter);
     }
 }
