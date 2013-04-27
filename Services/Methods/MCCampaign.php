@@ -103,7 +103,7 @@ class MCCampaign extends HttpClient
      */
     public function setText($text)
     {
-        $this->text = $test;
+        $this->text = $text;
     }
 
     /**
