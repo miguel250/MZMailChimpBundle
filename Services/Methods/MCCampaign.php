@@ -22,6 +22,7 @@ use MZ\MailChimpBundle\Services\HttpClient;
 class MCCampaign extends HttpClient
 {
 
+    private $listId;
     private $type;
     private $subject;
     private $fromEmail;
@@ -45,7 +46,17 @@ class MCCampaign extends HttpClient
     private $fbComments = true;
     private $timeWarp = false;
     private $ecomm360 = false;
-
+    
+    /**
+     * The list identificator
+     *
+     * @param integer $listId the list to which the message should be sent
+     */
+    public function setListId($listId)
+    {
+        $this->listId = $listId;
+    }
+    
     /**
      * The Campaign Type
      * 
