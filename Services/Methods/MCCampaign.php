@@ -22,7 +22,6 @@ use MZ\MailChimpBundle\Services\HttpClient;
 class MCCampaign extends HttpClient
 {
 
-    private $listId;
     private $type;
     private $subject;
     private $fromEmail;
