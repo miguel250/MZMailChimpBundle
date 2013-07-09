@@ -1,6 +1,7 @@
 # MZMailChimpBundle
 Symfony2 bundle for [MailChimp](http://apidocs.mailchimp.com/api/1.3/index.php) API And [Export API](http://apidocs.mailchimp.com/export/1.0/)
-[![Build Status](https://secure.travis-ci.org/miguel250/MZMailChimpBundle.png?branch=master)](http://travis-ci.org/miguel250/MZMailChimpBundle)
+
+[![Build Status](https://secure.travis-ci.org/miguel250/MZMailChimpBundle.png?branch=master)](http://travis-ci.org/miguel250/MZMailChimpBundle) [![Total Downloads](https://poser.pugx.org/mlpz/mailchimp-bundle/downloads.png)](https://packagist.org/packages/mlpz/mailchimp-bundle) [![Latest Stable Version](https://poser.pugx.org/mlpz/mailchimp-bundle/v/stable.png)](https://packagist.org/packages/mlpz/mailchimp-bundle)
 
 **License**
 
@@ -23,30 +24,30 @@ MZMailChimpBundle is licensed under the MIT License - see the `Resources/meta/LI
 Need support for a method not on the list submit an [issue](MZMailChimpBundle/issues/new)
 
 ## Setup
-**Using Submodule**
 
-    git submodule add https://github.com/miguel250/MZMailChimpBundle.git vendor/bundles/MZ/MailChimpBundle
-    git submodule add https://github.com/kriswallsmith/Buzz.git  vendor/buzz
-**Using the vendors script**
+### Step 1: Download MZMailChimpBundle using composer
 
-      [MZMailChimpBundle]
-          git=https://github.com/miguel250/MZMailChimpBundle.git
-          target=bundles/MZ/MailChimpBundle
-      [buzz]
-          git=https://github.com/kriswallsmith/Buzz.git
-          target=buzz/
-**Add the MZ namespace to autoloader**
+Add MZMailChimpBundle in your composer.json:
 
-``` php
-<?php
-   // app/autoload.php
-   $loader->registerNamespaces(array(
-    // ...
-    'MZ'               => __DIR__.'/../vendor/bundles',
-    'Buzz'             => __DIR__.'/../vendor/buzz/lib',
-  ));
+```js
+{
+    "require": {
+        "mlpz/mailchimp-bundle": "dev-master"
+    }
+}
 ```
-**Add MZMailChimpBundle to your application kernel**
+
+Now tell composer to download the bundle by running the command:
+
+``` bash
+$ php composer.phar update mlpz/mailchimp-bundle
+```
+
+Composer will install the bundle to your project's `vendor/mlpz` directory.
+
+### Step 2: Enable the bundle
+
+Enable the bundle in the kernel:
 
 ``` php
 <?php
@@ -60,7 +61,8 @@ public function registerBundles()
     );
 }
 ```
-**Yml configuration**
+
+### Step 3: Add configuration
 
 ``` yml
 # app/config/config.yml
@@ -69,6 +71,7 @@ mz_mail_chimp:
   default_list: #default list id
   ssl: true #option to use http or https
 ```
+
 ## Usage
 
 **Using service**
