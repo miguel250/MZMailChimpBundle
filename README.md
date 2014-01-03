@@ -16,6 +16,9 @@ MZMailChimpBundle is licensed under the MIT License - see the `Resources/meta/LI
 5. `campaignCreate`
 6. `campaignSendTest`
 7. `campaignSendNow`
+8. `listStaticSegmentAdd`
+9. `listStaticSegmentMembersAdd`
+10. `listStaticSegments`
 
 **MailChimp Export API Method Supported**
 
@@ -255,4 +258,66 @@ mz_mail_chimp:
        $ecommerce = $mailChimp->getEcommerce();
        
        $ecommerce->getOrder($pageStart, $batchLimit, $dateSince) //return array
+```
+
+**MailChimp API [create static segment](http://apidocs.mailchimp.com/api/2.0/lists/static-segment-add.php) in a controller**
+
+``` php
+<?php
+
+        $mailChimp = $this->get('MailChimp');
+	$list = $mailChimp->getList();
+        $list->listStaticSegmentAdd('first_segment'); // return int segment id
+
+```
+
+**MailChimp API [segment member add](http://apidocs.mailchimp.com/api/2.0/lists/static-segment-members-add.php) in a controller**
+
+``` php
+<?php
+
+        $mailChimp = $this->get('MailChimp');
+	$list = $mailChimp->getList();
+        $segmentId = $list->listStaticSegmentAdd('first_segment');
+	$batch = array('test1@example.com',test2@example.com');
+	$list->listStaticSegmentMembersAdd($segmentId, $batch);	
+
+```
+
+**MailChimp API [list static segment](http://apidocs.mailchimp.com/api/2.0/lists/static-segments.php) in a controller**
+
+``` php
+<?php
+
+        $mailChimp = $this->get('MailChimp');
+	$list = $mailChimp->getList();
+        $segments = $list->listStaticSegments();
+
+```
+
+**MailChimp API [send campaign to segment] in a controller**
+
+``` php
+<?php
+
+        $mailChimp = $this->get('MailChimp');
+	$campaign = $mailChimp->getCampaign();
+	$list = $mailChimp->getList();
+        $segmentId = $list->listStaticSegmentAdd('first_segment');
+	$batch = array('test1@example.com',test2@example.com');
+	$list->listStaticSegmentMembersAdd($segmentId, $batch);	
+	$conditions[] = array(
+				'field' => 'static_segment',
+				'op'    => 'eq',
+				'value' => $segmentId
+		);
+
+	$segment_options = array(
+				'match'      => 'all',
+				'conditions' => $conditions
+		);
+	$campaign->setSegmenOptions($segment_options);
+	$campaignId =  $campaign->create();
+	$campaign->SendNow($campaignId);
+
 ```

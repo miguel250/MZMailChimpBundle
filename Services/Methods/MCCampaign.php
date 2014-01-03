@@ -45,6 +45,7 @@ class MCCampaign extends HttpClient
     private $fbComments = true;
     private $timeWarp = false;
     private $ecomm360 = false;
+    private $segmentOptions = array();
     
     /**
      * The list identificator
@@ -285,6 +286,16 @@ class MCCampaign extends HttpClient
     {
         $this->ecomm360 = $ecomm360;
     }
+    
+    /**
+     * Set mailchimp segmentOptions
+     *
+     * @param array segmentOptions
+     */
+    public function setSegmenOptions(Array $segment_options)
+    {
+    	$this->segmentOptions = $segment_options;
+    }
 
     /**
      * Create options
@@ -331,9 +342,13 @@ class MCCampaign extends HttpClient
      */
     public function Create()
     {
+    	if(empty($this->segmentOptions)){
+    		$payload = array('type' => $this->type, 'options' => $this->Options(),
+    				'content' => $this->Content());
+    	}else {
         $payload = array('type' => $this->type, 'options' => $this->Options(),
-                'content' => $this->Content());
-
+                'content' => $this->Content(), 'segment_opts' => $this->segmentOptions);
+    	}
         $apiCall = 'campaignCreate';
         $data = $this->makeRequest($apiCall, $payload);
         $data = json_decode($data);

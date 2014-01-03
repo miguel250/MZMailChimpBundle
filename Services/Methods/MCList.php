@@ -236,4 +236,52 @@ class MCList extends HttpClient
         $data = $this->makeRequest($apiCall, $payload);
         return json_decode($data);
     }
+    
+    /**
+     * create static segment
+     * @param segment name
+     * @return segment id
+     */
+    public function listStaticSegmentAdd($name)
+    {
+    	$payload = array(
+    			'id'	=> $this->listId,
+    			'name' => $name,
+    	);
+    	$apiCall = 'listStaticSegmentAdd';
+    	$data = $this->makeRequest($apiCall, $payload);
+    	return json_decode($data);
+    }
+    
+    /**
+     * add emails to segment
+     * @param int $seg_id
+     * @param array $batch
+     * @return mixed
+     */
+    public function listStaticSegmentMembersAdd($seg_id, $batch = array())
+    {
+    	$payload = array(
+    			'id'	=> $this->listId,
+    			'seg_id' => $seg_id,
+    			'batch' => $batch,
+    	);
+    	$apiCall = 'listStaticSegmentMembersAdd';
+    	$data = $this->makeRequest($apiCall, $payload);
+    	return json_decode($data);
+    }
+    
+    /**
+     * get all segments
+     * @return array
+     */
+    public function listStaticSegments()
+    {
+    	$payload = array(
+    			'id'	=> $this->listId,
+    	);
+    	$apiCall = 'listStaticSegments';
+    	$data = $this->makeRequest($apiCall, $payload);
+    	return json_decode($data);
+    }
 }
