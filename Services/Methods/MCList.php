@@ -236,4 +236,20 @@ class MCList extends HttpClient
         $data = $this->makeRequest($apiCall, $payload);
         return json_decode($data);
     }
+    
+    /**
+     * create static segment
+     * @param segment name
+     * @return segment id
+     */
+    public function listStaticSegmentAdd($name)
+    {
+    	$payload = array(
+    			'id'	=> $this->listId,
+    			'name' => $name,
+    	);
+    	$apiCall = 'listStaticSegmentAdd';
+    	$data = $this->makeRequest($apiCall, $payload);
+    	return json_decode($data);
+    }
 }
