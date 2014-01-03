@@ -292,7 +292,7 @@ class MCCampaign extends HttpClient
      *
      * @param array segmentOptions
      */
-    public function setSegmenOptions($segment_options)
+    public function setSegmenOptions(Array $segment_options)
     {
     	$this->segmentOptions = $segment_options;
     }
