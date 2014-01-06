@@ -406,7 +406,6 @@ class MCCampaign extends HttpClient
     
     /**
      * list of campaigns and their details
-     * @param array filters
      * 
      * @return array
      */
