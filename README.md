@@ -20,6 +20,7 @@ MZMailChimpBundle is licensed under the MIT License - see the `Resources/meta/LI
 9. `listStaticSegmentMembersAdd`
 10. `listStaticSegments`
 11. 'campaigns'
+12. `campaignStats`
 
 **MailChimp Export API Method Supported**
 
@@ -344,3 +345,16 @@ mz_mail_chimp:
 	$campaign->campaigns();
 
 ```
+
+**MailChimp API [campaignStats](http://apidocs.mailchimp.com/api/rtfm/campaignstats.func.php) in a controller**
+
+``` php
+<?php
+
+        $mailChimp = $this->get('MailChimp');
+	$campaign = $mailChimp->getCampaign();
+        $campaign->campaignStats($campaignId); //return array(),  struct of the statistics for this campaign
+
+
+```
+
