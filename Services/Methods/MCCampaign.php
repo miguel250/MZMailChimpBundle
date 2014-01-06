@@ -420,4 +420,22 @@ class MCCampaign extends HttpClient
     	
     	return $data;
     }
+    
+    /**
+     * get all the relevant campaign statistics (opens, bounces, clicks, etc.) 
+     * 
+     * @param string $campaignId campaign id
+     * 
+     * @return array
+     */
+    public function campaignStats($campaignId)
+    {
+    	$payload = array('cid' => $campaignId);
+    	
+    	$apiCall = 'campaignStats';
+    	$data = $this->makeRequest($apiCall, $payload);
+    	$data = json_decode($data);
+    	
+    	return $data;
+    }
 }
