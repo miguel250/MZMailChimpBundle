@@ -46,6 +46,7 @@ class MCCampaign extends HttpClient
     private $timeWarp = false;
     private $ecomm360 = false;
     private $segmentOptions = array();
+    private $filters = array();
     
     /**
      * The list identificator
@@ -296,6 +297,16 @@ class MCCampaign extends HttpClient
     {
     	$this->segmentOptions = $segment_options;
     }
+    
+    /**
+     * Set mailchimp filters
+     *
+     * @param array filters
+     */
+    public function setFilters(Array $filters)
+    {
+    	$this->filters = $filters;
+    }
 
     /**
      * Create options
@@ -391,5 +402,22 @@ class MCCampaign extends HttpClient
         $data = json_decode($data);
 
         return $data;
+    }
+    
+    /**
+     * list of campaigns and their details
+     * @param array filters
+     * 
+     * @return array
+     */
+    public function campaigns()
+    {
+    	$payload = array('filters' => $this->filters);
+    	
+    	$apiCall = 'campaigns';
+    	$data = $this->makeRequest($apiCall, $payload);
+    	$data = json_decode($data);
+    	
+    	return $data;
     }
 }
