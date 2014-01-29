@@ -36,15 +36,12 @@ class MCExport extends HttpClient
 
         $result = preg_split ('/$\R?^/m', $data);
 
-        $header = str_replace(array('[', ']', '"'), "", $result[0]);
-        $headerArray = explode(",", $header);
+        $headerArray = json_decode($result[0]);
         unset($result[0]);
 
         $data = array();
         foreach ($result as $value) {
-            $clean = str_replace(array('[', ']', '"'), "", $value);
-            $cleanArray = explode(",", $clean);
-            $data[] = array_combine($headerArray, $cleanArray);
+            $data[] = array_combine($headerArray, json_decode($value));
         }
 
         return $data;
