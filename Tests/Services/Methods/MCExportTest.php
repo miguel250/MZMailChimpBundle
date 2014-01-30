@@ -19,7 +19,7 @@ class MCExportTest extends \PHPUnit_Framework_TestCase
     public function testDumpList()
     {
         $expect = array(
-            0 => array( 
+            0 => array(
                 'Email Address' => 'test@gmail.com',
                 'First Name' => 'test',
                 'Last Name' => 'test',
@@ -34,19 +34,19 @@ class MCExportTest extends \PHPUnit_Framework_TestCase
                 'LONGITUDE' => '-73.9168000',
                 'GMTOFF' => '-5',
                 'DSTOFF' => '-4',
-                'TIMEZONE' => 'America\/New_York',
+                'TIMEZONE' => 'America/New_York',
                 'CC' => 'US',
                 'REGION' => 'NY',
                 'LAST_CHANGED' => '2012-07-03 21:47:31'
                 )
             );
 
-        $export = $this->getMock('MZ\MailChimpBundle\Services\Methods\MCExport', 
-            array('makeRequest'), 
-            array(), 
-            '', 
-            false, 
-            false, 
+        $export = $this->getMock('MZ\MailChimpBundle\Services\Methods\MCExport',
+            array('makeRequest'),
+            array(),
+            '',
+            false,
+            false,
             true);
 
         $reponse = <<<EOD
@@ -56,6 +56,6 @@ EOD;
         $export->expects($this->any())->method('makeRequest')->will($this->returnValue($reponse));
         $dump = $export->DumpList();
         
-        $this->assertEquals($dump, $expect);
+        $this->assertEquals($expect, $dump);
     }
 }
