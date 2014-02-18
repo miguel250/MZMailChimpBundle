@@ -284,4 +284,19 @@ class MCList extends HttpClient
     	$data = $this->makeRequest($apiCall, $payload);
     	return json_decode($data);
     }
+
+
+    /**
+     * Get all interest groupings
+     * @return array
+     */
+    public function listInterestGroupings()
+    {
+        $payload = array(
+            'id'	=> $this->listId,
+        );
+        $apiCall = 'listInterestGroupings';
+        $data = $this->makeRequest($apiCall, $payload);
+        return json_decode($data);
+    }
 }
