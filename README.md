@@ -19,7 +19,7 @@ MZMailChimpBundle is licensed under the MIT License - see the `Resources/meta/LI
 8. `listStaticSegmentAdd`
 9. `listStaticSegmentMembersAdd`
 10. `listStaticSegments`
-11. 'campaigns'
+11. `campaigns`
 12. `campaignStats`
 
 **MailChimp Export API Method Supported**
