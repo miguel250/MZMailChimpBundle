@@ -78,9 +78,9 @@ class MailChimp
     }
     
     /**
-     * get mailing list id
+     * get datacenter
      *
-     * @return string $listId
+     * @return string $datacenter
      */
     public function getDatacenter()
     {
