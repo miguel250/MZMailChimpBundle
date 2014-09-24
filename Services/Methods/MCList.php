@@ -22,7 +22,7 @@ use MZ\MailChimpBundle\Services\HttpClient;
 class MCList extends HttpClient
 {
 
-    private $merge = null;
+    private $merge = array();
     private $emailType = 'html';
     private $doubleOptin = true;
     private $updateExisting = false;
