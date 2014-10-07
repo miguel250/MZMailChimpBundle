@@ -18,7 +18,7 @@
         "ext-curl": "*"
     },
     "autoload": {
-        "psr-0": { "MZ\\MailChimpBundle": "" }
+        "psr-0": { "MZ\\MailChimpBundle": "src/" }
     },
     "target-dir": "MZ/MailChimpBundle"
 }
