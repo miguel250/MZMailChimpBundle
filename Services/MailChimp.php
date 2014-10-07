@@ -31,6 +31,8 @@ class MailChimp
      */
     public function __construct($apiKey, $listId, $ssl = true)
     {
+        trigger_error("API v1 has being deprecated by MailChimp. A new version of this bundle is being work on.", E_USER_DEPRECATED);
+
         $this->apiKey = $apiKey;
         $this->listId = $listId;
 
