@@ -281,7 +281,7 @@ mz_mail_chimp:
         $mailChimp = $this->get('MailChimp');
 	$list = $mailChimp->getList();
         $segmentId = $list->listStaticSegmentAdd('first_segment');
-	$batch = array('test1@example.com',test2@example.com');
+	$batch = array('test1@example.com', 'test2@example.com');
 	$list->listStaticSegmentMembersAdd($segmentId, $batch);	
 
 ```
@@ -306,7 +306,7 @@ mz_mail_chimp:
 	$campaign = $mailChimp->getCampaign();
 	$list = $mailChimp->getList();
         $segmentId = $list->listStaticSegmentAdd('first_segment');
-	$batch = array('test1@example.com',test2@example.com');
+	$batch = array('test1@example.com', 'test2@example.com');
 	$list->listStaticSegmentMembersAdd($segmentId, $batch);	
 	$conditions[] = array(
 				'field' => 'static_segment',
