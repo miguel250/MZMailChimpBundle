@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace MZ\MailChimpBundle\Services;
+namespace MZ\MailChimpBundle\Lib;
 
 /**
  * Mailchimp
@@ -39,7 +39,7 @@ class MailChimp
         if($ssl) {
             $this->dataCenter ='https://' . $key[1] . '.api.mailchimp.com/2.0/';
         }else {
-            $this->dataCenter ='http://' . $key[1] . '.api.mailchimp.com/';
+            $this->dataCenter ='http://' . $key[1] . '.api.mailchimp.com/2.0/';
         }
 
         if (!function_exists('curl_init')) {

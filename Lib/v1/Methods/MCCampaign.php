@@ -9,9 +9,9 @@
  * with this source code in the file LICENSE.
  */
 
-namespace MZ\MailChimpBundle\Services\Methods;
+namespace MZ\MailChimpBundle\Lib\v1\Methods;
 
-use MZ\MailChimpBundle\Services\HttpClient;
+use MZ\MailChimpBundle\Lib\HttpClient;
 
 /**
  * Mailchimp Campagin method

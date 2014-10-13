@@ -9,9 +9,9 @@
  * with this source code in the file LICENSE.
  */
 
-namespace MZ\MailChimpBundle\Tests\Services;
+namespace MZ\MailChimpBundle\Tests\v1;
 
-use MZ\MailChimpBundle\Services\MailChimp;
+use MZ\MailChimpBundle\Lib\v1\MailChimp;
 
 /**
  * Test mailchimp

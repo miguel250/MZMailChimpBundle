@@ -8,11 +8,12 @@
         <parameter key="mz_mail_chimp.api_key">null</parameter>
         <parameter key="mz_mail_chimp.default_list">null</parameter>
         <parameter key="mz_mail_chimp.ssl">true</parameter>
-        <parameter key="mz_mail_chimp.mailchimp.service.class">MZ\MailChimpBundle\Services\MailChimp</parameter>
+        <parameter key="mz_mail_chimp.mailchimp.lib.v1.class">MZ\MailChimpBundle\Lib\v1\MailChimp</parameter>
+        <parameter key="mz_mail_chimp.mailchimp.lib.v2.class">MZ\MailChimpBundle\Lib\v2\MailChimp</parameter>
     </parameters>
 
     <services>
-        <service id="MailChimp" class="%mz_mail_chimp.mailchimp.service.class%">
+        <service id="MailChimp" class="%mz_mail_chimp.mailchimp.lib.v1.class%">
             <argument>%mz_mail_chimp.api_key%</argument>
             <argument>%mz_mail_chimp.default_list%</argument>
             <argument>%mz_mail_chimp.ssl%</argument>

@@ -7,8 +7,11 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-use MZ\MailChimpBundle\Services\HttpClient;
-use MZ\MailChimpBundle\Services\Methods\MCExport;
+
+namespace MZ\MailChimpBundle\Tests\v1\Methods;
+
+use MZ\MailChimpBundle\Lib\HttpClient;
+use MZ\MailChimpBundle\Lib\v1\MCExport;
 /**
  * Test Mailchimp Export Class
  *
@@ -41,7 +44,7 @@ class MCExportTest extends \PHPUnit_Framework_TestCase
                 )
             );
 
-        $export = $this->getMock('MZ\MailChimpBundle\Services\Methods\MCExport',
+        $export = $this->getMock('MZ\MailChimpBundle\Lib\v1\Methods\MCExport',
             array('makeRequest'),
             array(),
             '',

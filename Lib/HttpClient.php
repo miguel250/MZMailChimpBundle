@@ -9,13 +9,12 @@
  * with this source code in the file LICENSE.
  */
 
-namespace MZ\MailChimpBundle\Services;
+namespace MZ\MailChimpBundle\Lib;
 
-use  Buzz\Browser,
-     Buzz\Client\Curl;
+Use \Curl;
 
 /**
- * HTTP client
+ * HTTP Client
  *
  * @author Miguel Perez <miguel@mlpz.mp>
  */
@@ -58,12 +57,20 @@ class HttpClient
         } else {
             $url = $this->dataCenter . '1.3/?method=' . $apiCall;
         }
-        $curl = new Curl();
-        $curl->setOption(CURLOPT_USERAGENT, 'MZMailChimpBundle');
-        $browser = new Browser($curl);
-        $response = $browser->post($url, array(), http_build_query($payload));
 
-        return $response->getContent();
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_USERAGENT, "MZMailChimpBundle");
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($payload));
+        
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        var_dump($result);
+
+        return $result;
     }
 
 }
