@@ -31,15 +31,13 @@ class MailChimp
      */
     public function __construct($apiKey, $listId, $ssl = true)
     {
-        trigger_error("API v1 has being deprecated by MailChimp. A new version of this bundle is being work on.", E_USER_DEPRECATED);
-
         $this->apiKey = $apiKey;
         $this->listId = $listId;
 
         $key = preg_split("/-/", $this->apiKey);
         
         if($ssl) {
-            $this->dataCenter ='https://' . $key[1] . '.api.mailchimp.com/';
+            $this->dataCenter ='https://' . $key[1] . '.api.mailchimp.com/2.0/';
         }else {
             $this->dataCenter ='http://' . $key[1] . '.api.mailchimp.com/';
         }
