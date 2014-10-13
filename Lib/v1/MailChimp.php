@@ -35,6 +35,8 @@ class MailChimp
         $this->listId = $listId;
 
         $key = preg_split("/-/", $this->apiKey);
+
+        trigger_error("API v1 has being deprecated by MailChimp. Please use `Mailchimp.v2` service.", E_USER_DEPRECATED);
         
         if($ssl) {
             $this->dataCenter ='https://' . $key[1] . '.api.mailchimp.com/';
