@@ -18,6 +18,11 @@
             <argument>%mz_mail_chimp.default_list%</argument>
             <argument>%mz_mail_chimp.ssl%</argument>
         </service>
+        <service id="MailChimp.v2" class="%mz_mail_chimp.mailchimp.lib.v2.class%">
+            <argument>%mz_mail_chimp.api_key%</argument>
+            <argument>%mz_mail_chimp.default_list%</argument>
+            <argument>%mz_mail_chimp.ssl%</argument>
+        </service>
     </services>
 
 </container>

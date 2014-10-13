@@ -9,14 +9,14 @@
  * with this source code in the file LICENSE.
  */
 
-namespace MZ\MailChimpBundle\Lib;
+namespace MZ\MailChimpBundle\Lib\v2;
 
 /**
  * Mailchimp
  *
  * @author Miguel Perez <miguel@mlpz.mp>
  */
-class MailChimp
+class MailChimp 
 {
 
     private $apiKey;
@@ -34,7 +34,7 @@ class MailChimp
         $this->apiKey = $apiKey;
         $this->listId = $listId;
 
-        $key = preg_split("/-/", $this->apiKey);
+        $key = $this->setDataCenter($apiKey);
         
         if($ssl) {
             $this->dataCenter ='https://' . $key[1] . '.api.mailchimp.com/2.0/';
@@ -76,54 +76,23 @@ class MailChimp
     {
         return $this->listId;
     }
+
+    /**
+     * Set datacenter
+     *
+     * @param string $apiKey API key
+     */
+    private function setDataCenter($apiKey){
+        $this->dataCenter = preg_split("/-/", $apiKey);
+    }
     
     /**
      * get datacenter
      *
-     * @return string $datacenter
+     * @return string $dataCenter
      */
-    public function getDatacenter()
+    public function getDataCenter()
     {
         return $this->dataCenter;
-    }
-
-    /**
-     * Get List Methods
-     *
-     * @return Methods\MCList
-     */
-    public function getList()
-    {
-        return new Methods\MCList($this->apiKey, $this->listId, $this->dataCenter);
-    }
-
-    /**
-     * Get List Methods
-     *
-     * @return Methods\MCCampaign
-     */
-    public function getCampaign()
-    {
-        return new Methods\MCCampaign($this->apiKey, $this->listId, $this->dataCenter);
-    }
-
-    /**
-     * Get Export API
-     *
-     * @return Methods\MCExport
-     */
-    public function getExport()
-    {
-        return new Methods\MCExport($this->apiKey, $this->listId, $this->dataCenter);
-    }
-    
-    /**
-     * Get Ecommerce Methods
-     *
-     * @return Methods\MCEcommerce
-     */
-    public function getEcommerce()
-    {
-        return new Methods\MCEcommerce($this->apiKey, $this->listId, $this->dataCenter);
     }
 }
