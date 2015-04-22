@@ -60,6 +60,12 @@ class HttpClient
         }
         $curl = new Curl();
         $curl->setOption(CURLOPT_USERAGENT, 'MZMailChimpBundle');
+
+        // Set long timeout for Export API to allow for larger responses
+        if ($export) {
+            $curl->setOption(CURLOPT_TIMEOUT, 600);
+        }
+
         $browser = new Browser($curl);
         $response = $browser->post($url, array(), http_build_query($payload));
 
